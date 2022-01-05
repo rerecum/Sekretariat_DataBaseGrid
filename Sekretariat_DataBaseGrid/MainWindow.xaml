@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sekretariat_DataBaseGrid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="344" Margin="34,43,0,0" VerticalAlignment="Top" Width="718" RenderTransformOrigin="0.5,0.5">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:dbAppSekretariatDataSet x:Key="dbAppSekretariatDataSet"/>
+        <CollectionViewSource x:Key="tblGrid_SekretariatViewSource" Source="{Binding tblGrid_Sekretariat, Source={StaticResource dbAppSekretariatDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource tblGrid_SekretariatViewSource}">
+        <DataGrid HorizontalAlignment="Left" Height="344" Margin="34,43,0,0" VerticalAlignment="Top" Width="718" RenderTransformOrigin="0.5,0.5" ItemsSource="{Binding}">
         </DataGrid>
     </Grid>
 </Window>

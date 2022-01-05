@@ -24,5 +24,16 @@ namespace Sekretariat_DataBaseGrid
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            Sekretariat_DataBaseGrid.dbAppSekretariatDataSet dbAppSekretariatDataSet = ((Sekretariat_DataBaseGrid.dbAppSekretariatDataSet)(this.FindResource("dbAppSekretariatDataSet")));
+            // Załaduj dane do tabeli tblGrid_Sekretariat. Możesz modyfikować ten kod w razie potrzeby.
+            Sekretariat_DataBaseGrid.dbAppSekretariatDataSetTableAdapters.tblGrid_SekretariatTableAdapter dbAppSekretariatDataSettblGrid_SekretariatTableAdapter = new Sekretariat_DataBaseGrid.dbAppSekretariatDataSetTableAdapters.tblGrid_SekretariatTableAdapter();
+            dbAppSekretariatDataSettblGrid_SekretariatTableAdapter.Fill(dbAppSekretariatDataSet.tblGrid_Sekretariat);
+            System.Windows.Data.CollectionViewSource tblGrid_SekretariatViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblGrid_SekretariatViewSource")));
+            tblGrid_SekretariatViewSource.View.MoveCurrentToFirst();
+        }
     }
 }
